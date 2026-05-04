@@ -44,7 +44,13 @@ sentiment-analyzer/
 
 ## 🛠️ Tech StackCore:
 
-Python, Flask, GunicornMachine Learning: PyTorch, Hugging Face transformersFrontend: Bootstrap 5, JavaScript (AJAX), HTML5, CSS3DevOps & Cloud: Docker, Google Cloud Platform (Cloud Run)💻 Local Installation and Setup1.
+Python, Flask, Gunicorn
+
+Machine Learning: PyTorch, Hugging Face transformers
+
+Frontend: Bootstrap 5, JavaScript (AJAX), HTML5, CSS3DevOps &
+
+ Cloud: Docker, Google Cloud Platform (Cloud Run)💻 Local Installation and Setup1.
 
 Clone the RepositoryBashgit clone [https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git](https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git)
 cd sentiment-analyzer
@@ -55,7 +61,7 @@ Bash python3 -m venv venv
 
 source venv/bin/activate  
 
-# On Windows: venv\Scripts\activate
+On Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
 
@@ -73,12 +79,12 @@ gcloud config set project YOUR_PROJECT_ID
 Build and deploy to your preferred region (e.g., asia-south1 for optimal latency):
 
 Bashgcloud run deploy sentiment-analyzer
- \
-    --source . \
-    --region asia-south1 \
-    --allow-unauthenticated \
-    --min-instances 0 \
-    --max-instances 2 \
+ 
+    --source . 
+    --region asia-south1 
+    --allow-unauthenticated 
+    --min-instances 0 
+    --max-instances 2 
     --memory 2Gi
 ---
     
