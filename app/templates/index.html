@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center position-relative" style="z-index: 10;">
+    <div class="col-lg-6 col-md-8">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-5">
+                <h3 class="fw-bold text-center mb-3">Smart Sentiment Analyzer</h3>
+                <p class="text-muted text-center mb-4" style="font-weight: 500;">Enter text to get immediate AI sentiment classification</p>
+
+                <form id="sentimentForm">
+                    <div class="mb-4">
+                        <textarea class="form-control p-3 border-1 bg-light" id="inputText" rows="5" placeholder="Type or paste your text here..." required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Analyze Sentiment</button>
+                    </div>
+                </form>
+
+                <div id="resultCard" class="mt-4 p-4 rounded-4 d-none">
+                    <h5 class="fw-bold mb-3">Analysis Result</h5>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-medium">Sentiment Classification</span>
+                        <span id="sentimentLabel" class="badge"></span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="fw-medium" style="font-size: 0.9rem; color: inherit; opacity: 0.8;">Confidence Score</span>
+                            <span id="sentimentScore" class="fw-bold" style="font-size: 0.9rem;"></span>
+                        </div>
+                        <div class="confidence-track">
+                            <div id="confidenceFill" class="confidence-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('sentimentForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const text = document.getElementById('inputText').value;
+        const submitBtn = document.getElementById('submitBtn');
+        const resultCard = document.getElementById('resultCard');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+        
+        // Hide and reset
+        resultCard.classList.add('d-none');
+        document.getElementById('confidenceFill').style.width = '0%';
+
+        try {
+            const response = await fetch('/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            });
+
+            const data = await response.json();
+            
+            // Remove d-none and add animation
+            resultCard.className = 'mt-4 p-4 rounded-4 animate-reveal';
+
+            if (data.error) {
+                resultCard.classList.add('sentiment-negative');
+                document.getElementById('sentimentLabel').textContent = 'Error';
+                document.getElementById('sentimentScore').textContent = data.error;
+                document.getElementById('confidenceFill').style.width = '0%';
+            } else {
+                let isPositive = data.label === 'POSITIVE';
+                let confidencePercent = (data.score * 100).toFixed(1);
+                
+                resultCard.classList.add(isPositive ? 'sentiment-positive' : 'sentiment-negative');
+                document.getElementById('sentimentLabel').textContent = data.label;
+                document.getElementById('sentimentScore').textContent = `${confidencePercent}%`;
+                
+                // Small delay to ensure transition works
+                setTimeout(() => {
+                    document.getElementById('confidenceFill').style.width = `${confidencePercent}%`;
+                }, 50);
+            }
+        } catch (err) {
+            resultCard.className = 'mt-4 p-4 rounded-4 animate-reveal sentiment-negative';
+            document.getElementById('sentimentLabel').textContent = 'Error';
+            document.getElementById('sentimentScore').textContent = 'Could not reach backend';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Analyze Sentiment';
+        }
+    });
+</script>
+{% endblock %}
