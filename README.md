@@ -60,4 +60,17 @@ Build and deploy to your preferred region (e.g., asia-south1 for optimal latency
     --memory 2Gi
 ---
     
-## 🧪 Usage ExamplesTest the endpoint with these sample inputs to observe classification and confidence scores:Input TextExpected LabelConfidence"This is the best application I have ever used, it works flawlessly!"POSITIVE> 95%"The deployment process was incredibly smooth and saved us a lot of time."POSITIVE> 90%"The application crashed immediately when I tried to run it."NEGATIVE> 99%🤝 ContributingContributions are welcome! Feel free to open an issue or submit a pull request if you have ideas for model optimization or UI enhancements.📄 LicenseDistributed under the MIT License. See LICENSE for more information.
+## 🧪 Usage Examples
+
+Test the endpoint with these sample inputs to observe classification and confidence scores:Input TextExpected LabelConfidence
+"This is the best application I have ever used, it works flawlessly!"POSITIVE> 95%
+"The deployment process was incredibly smooth and saved us a lot of time."POSITIVE> 90%
+"The application crashed immediately when I tried to run it."NEGATIVE> 99%🤝
+
+ContributingContributions are welcome!
+
+Feel free to open an issue or submit a pull request if you have ideas for model optimization or UI enhancements.
+
+📄 LicenseDistributed under the MIT License.
+
+See LICENSE for more information.
