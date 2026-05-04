@@ -39,7 +39,10 @@ sentiment-analyzer/
 └── README.md
 ```
 
-## 🛠️ Tech StackCore: Python, Flask, GunicornMachine Learning: PyTorch, Hugging Face transformersFrontend: Bootstrap 5, JavaScript (AJAX), HTML5, CSS3DevOps & Cloud: Docker, Google Cloud Platform (Cloud Run)💻 Local Installation and Setup1. Clone the RepositoryBashgit clone [https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git](https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git)
+## 🛠️ Tech StackCore:
+Python, Flask, GunicornMachine Learning: PyTorch, Hugging Face transformersFrontend: Bootstrap 5, JavaScript (AJAX), HTML5, CSS3DevOps & Cloud: Docker, Google Cloud Platform (Cloud Run)💻 Local Installation and Setup1.
+
+Clone the RepositoryBashgit clone [https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git](https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git)
 cd sentiment-analyzer
 
 2. Install DependenciesIt is recommended to use a Python virtual environment:Bashpython3 -m venv venv
