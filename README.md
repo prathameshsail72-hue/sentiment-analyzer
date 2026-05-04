@@ -13,8 +13,11 @@ A modern, production-ready web application that utilizes advanced Natural Langua
 ## 🚀 Features
 
 - **Deep Learning Inference:** Leverages a fine-tuned Transformer model to classify text sentiment with high accuracy and confidence scoring.
+
 - **Production-Grade Backend:** Employs an application factory pattern with multi-threaded Gunicorn workers for reliable concurrent processing.
+
 - **Cinematic & Responsive UI:** Designed with a warm vintage aesthetic using Bootstrap 5, featuring a dynamic loading state and results visualization.
+
 - **Scalable Infrastructure:** Dockerized and prepared for serverless deployment on Google Cloud Run.
 
 ---
@@ -40,21 +43,37 @@ sentiment-analyzer/
 ```
 
 ## 🛠️ Tech StackCore:
+
 Python, Flask, GunicornMachine Learning: PyTorch, Hugging Face transformersFrontend: Bootstrap 5, JavaScript (AJAX), HTML5, CSS3DevOps & Cloud: Docker, Google Cloud Platform (Cloud Run)💻 Local Installation and Setup1.
 
 Clone the RepositoryBashgit clone [https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git](https://github.com/YOUR_GITHUB_USERNAME/sentiment-analyzer.git)
 cd sentiment-analyzer
 
-2. Install DependenciesIt is recommended to use a Python virtual environment:Bashpython3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+2. Install DependenciesIt is recommended to use a Python virtual environment:
+
+Bash python3 -m venv venv
+
+source venv/bin/activate  
+
+# On Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
 
-4. Run the Application LocallyBashpython run.py
-The application will be accessible at http://localhost:8080.☁️ Deployment to Google Cloud RunInitialize the Google Cloud SDK and log in:Bashgcloud auth login
+4. Run the Application Locally
+
+Bash python run.py
+The application will be accessible at http://localhost:8080.
+
+☁️ Deployment to Google Cloud RunInitialize the Google Cloud SDK and log in:
+
+Bashgcloud auth login
+
 gcloud config set project YOUR_PROJECT_ID
 
-Build and deploy to your preferred region (e.g., asia-south1 for optimal latency):Bashgcloud run deploy sentiment-analyzer \
+Build and deploy to your preferred region (e.g., asia-south1 for optimal latency):
+
+Bashgcloud run deploy sentiment-analyzer
+ \
     --source . \
     --region asia-south1 \
     --allow-unauthenticated \
@@ -65,9 +84,14 @@ Build and deploy to your preferred region (e.g., asia-south1 for optimal latency
     
 ## 🧪 Usage Examples
 
-Test the endpoint with these sample inputs to observe classification and confidence scores:Input TextExpected LabelConfidence
+Test the endpoint with these sample inputs to observe classification and confidence scores:
+
+Input TextExpected LabelConfidence
+
 "This is the best application I have ever used, it works flawlessly!"POSITIVE> 95%
+
 "The deployment process was incredibly smooth and saved us a lot of time."POSITIVE> 90%
+
 "The application crashed immediately when I tried to run it."NEGATIVE> 99%🤝
 
 ContributingContributions are welcome!
