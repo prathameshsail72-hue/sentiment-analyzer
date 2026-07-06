@@ -4,8 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# Initialize the pipeline globally so it's loaded once per worker.
-# This uses the default model: distilbert-base-uncased-finetuned-sst-2-english
 print("Loading sentiment analysis model...")
 sentiment_pipeline = pipeline("sentiment-analysis")
 print("Model loaded successfully.")
@@ -27,7 +25,6 @@ def analyze():
     text = data['text']
     
     try:
-        # The pipeline returns a list of dictionaries, e.g., [{'label': 'POSITIVE', 'score': 0.99}]
         result = sentiment_pipeline(text)[0]
         return jsonify({
             'label': result['label'],
@@ -37,6 +34,5 @@ def analyze():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Cloud Run provides the port in the PORT environment variable.
     port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port, debug=True)
